@@ -1,0 +1,40 @@
+object Form1: TForm1
+  Left = 422
+  Height = 94
+  Top = 130
+  Width = 168
+  BorderIcons = [biSystemMenu]
+  Caption = 'FileCount'
+  ClientHeight = 94
+  ClientWidth = 168
+  FormStyle = fsStayOnTop
+  OnCreate = FormCreate
+  Position = poDefaultPosOnly
+  LCLVersion = '2.0.10.0'
+  object Label1: TLabel
+    Left = 8
+    Height = 78
+    Top = 8
+    Width = 152
+    Align = alClient
+    Alignment = taRightJustify
+    AutoSize = False
+    BorderSpacing.Around = 8
+    Caption = '0'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -64
+    Font.Name = 'Arial Narrow'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Layout = tlCenter
+    ParentColor = False
+    ParentFont = False
+    OnDblClick = Label1DblClick
+  end
+  object Timer1: TTimer
+    OnTimer = Timer1Timer
+    Left = 94
+    Top = 50
+  end
+end
