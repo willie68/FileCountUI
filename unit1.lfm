@@ -1,16 +1,16 @@
 object Form1: TForm1
-  Left = 422
+  Left = 335
   Height = 94
-  Top = 130
+  Top = 118
   Width = 168
   BorderIcons = [biSystemMenu]
   Caption = 'FileCount'
   ClientHeight = 94
   ClientWidth = 168
-  FormStyle = fsStayOnTop
+  FormStyle = fsSystemStayOnTop
   OnCreate = FormCreate
   Position = poDefaultPosOnly
-  LCLVersion = '2.0.10.0'
+  LCLVersion = '2.0.12.0'
   object Label1: TLabel
     Left = 8
     Height = 78
@@ -30,6 +30,7 @@ object Form1: TForm1
     Layout = tlCenter
     ParentColor = False
     ParentFont = False
+    OnClick = Label1Click
     OnDblClick = Label1DblClick
   end
   object Timer1: TTimer

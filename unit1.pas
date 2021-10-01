@@ -15,6 +15,7 @@ type
     Label1: TLabel;
     Timer1: TTimer;
     procedure FormCreate(Sender: TObject);
+    procedure Label1Click(Sender: TObject);
     procedure Label1DblClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
   private
@@ -33,6 +34,7 @@ implementation
 
 {$R *.lfm}
 
+uses MCSTools;
 { TForm1 }
 
 procedure TForm1.FormCreate(Sender: TObject);
@@ -42,10 +44,16 @@ begin
   Label1.Caption := IntToStr(0);
 end;
 
-procedure TForm1.Label1DblClick(Sender: TObject);
+procedure TForm1.Label1Click(Sender: TObject);
 begin
   baseCount := GetDirCount();
   Timer1Timer(nil);
+end;
+
+procedure TForm1.Label1DblClick(Sender: TObject);
+begin
+  WinExecAndWait('.\\MCSAddSub.exe',1);
+  Label1Click(Sender);
 end;
 
 procedure TForm1.Timer1Timer(Sender: TObject);
