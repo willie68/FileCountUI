@@ -5,22 +5,30 @@ unit Unit1;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
+  ComCtrls, SpinEx;
 
 type
 
   { TForm1 }
 
   TForm1 = class(TForm)
+    btnDup: TButton;
+    btnRestore: TButton;
+    btnStore: TButton;
     Label1: TLabel;
+    spFolder: TSpinEditEx;
     Timer1: TTimer;
+    procedure btnDupClick(Sender: TObject);
+    procedure btnRestoreClick(Sender: TObject);
+    procedure btnStoreClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Label1Click(Sender: TObject);
     procedure Label1DblClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
   private
     dir: string;
-    baseCount : Integer;
+    baseCount: integer;
 
     function GetDirCount(): integer;
   public
@@ -35,6 +43,7 @@ implementation
 {$R *.lfm}
 
 uses MCSTools;
+
 { TForm1 }
 
 procedure TForm1.FormCreate(Sender: TObject);
@@ -42,6 +51,30 @@ begin
   dir := GetCurrentDir;
   baseCount := GetDirCount();
   Label1.Caption := IntToStr(0);
+end;
+
+procedure TForm1.btnDupClick(Sender: TObject);
+begin
+  WinExecAndWait('.\\MCSAddSub.exe -d -f ./', 1);
+  Label1Click(Sender);
+end;
+
+procedure TForm1.btnRestoreClick(Sender: TObject);
+var
+  cmd: string;
+begin
+  cmd := '.\\MCSAddSub.exe -d -f ./ -r -t ' + IntToStr(spFolder.Value);
+  WinExecAndWait(PChar(cmd), 1);
+  Label1Click(Sender);
+end;
+
+procedure TForm1.btnStoreClick(Sender: TObject);
+var
+  cmd: string;
+begin
+  cmd := '.\\MCSAddSub.exe -d -f ./ -s -t ' + IntToStr(spFolder.Value);
+  WinExecAndWait(PChar(cmd), 1);
+  Label1Click(Sender);
 end;
 
 procedure TForm1.Label1Click(Sender: TObject);
@@ -52,13 +85,13 @@ end;
 
 procedure TForm1.Label1DblClick(Sender: TObject);
 begin
-  WinExecAndWait('.\\MCSAddSub.exe',1);
+  WinExecAndWait('.\\MCSAddSub.exe -d -m -f ./', 1);
   Label1Click(Sender);
 end;
 
 procedure TForm1.Timer1Timer(Sender: TObject);
 begin
-  Label1.Caption:=IntToStr(GetDirCount() - baseCount);
+  Label1.Caption := IntToStr(GetDirCount() - baseCount);
 end;
 
 function TForm1.GetDirCount(): integer;

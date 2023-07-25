@@ -1,29 +1,31 @@
 object Form1: TForm1
-  Left = 335
-  Height = 94
-  Top = 118
-  Width = 168
+  Left = 406
+  Height = 141
+  Top = 152
+  Width = 264
   BorderIcons = [biSystemMenu]
   Caption = 'FileCount'
-  ClientHeight = 94
-  ClientWidth = 168
+  ClientHeight = 141
+  ClientWidth = 264
+  DesignTimePPI = 144
   FormStyle = fsSystemStayOnTop
   OnCreate = FormCreate
   Position = poDefaultPosOnly
-  LCLVersion = '2.0.12.0'
+  ShowHint = True
+  LCLVersion = '2.2.6.0'
   object Label1: TLabel
-    Left = 8
-    Height = 78
-    Top = 8
-    Width = 152
+    Left = 12
+    Height = 117
+    Top = 12
+    Width = 240
     Align = alClient
     Alignment = taRightJustify
     AutoSize = False
-    BorderSpacing.Around = 8
+    BorderSpacing.Around = 12
     Caption = '0'
     Font.CharSet = ANSI_CHARSET
     Font.Color = clBlack
-    Font.Height = -64
+    Font.Height = -96
     Font.Name = 'Arial Narrow'
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
@@ -33,9 +35,51 @@ object Form1: TForm1
     OnClick = Label1Click
     OnDblClick = Label1DblClick
   end
+  object btnDup: TButton
+    Left = 8
+    Height = 38
+    Hint = 'remove doubles'
+    Top = 8
+    Width = 38
+    Caption = 'D'
+    OnClick = btnDupClick
+    TabOrder = 0
+  end
+  object btnRestore: TButton
+    Left = 8
+    Height = 32
+    Hint = 'Restore'
+    Top = 97
+    Width = 19
+    Caption = '<'
+    OnClick = btnRestoreClick
+    TabOrder = 1
+  end
+  object btnStore: TButton
+    Left = 27
+    Height = 32
+    Hint = 'Store'
+    Top = 97
+    Width = 19
+    Caption = '>'
+    OnClick = btnStoreClick
+    TabOrder = 2
+  end
+  object spFolder: TSpinEditEx
+    Left = 8
+    Height = 33
+    Hint = 'temp folder'
+    Top = 56
+    Width = 43
+    MaxLength = 0
+    TabOrder = 3
+    MaxValue = 9
+    NullValue = 0
+    Value = 0
+  end
   object Timer1: TTimer
     OnTimer = Timer1Timer
-    Left = 94
-    Top = 50
+    Left = 141
+    Top = 75
   end
 end
