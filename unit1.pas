@@ -56,7 +56,6 @@ end;
 procedure TForm1.btnDupClick(Sender: TObject);
 begin
   WinExecAndWait('.\\MCSAddSub.exe -d -f ./', 1);
-  Label1Click(Sender);
 end;
 
 procedure TForm1.btnRestoreClick(Sender: TObject);
@@ -65,7 +64,6 @@ var
 begin
   cmd := '.\\MCSAddSub.exe -d -f ./ -r -t ' + IntToStr(spFolder.Value);
   WinExecAndWait(PChar(cmd), 1);
-  Label1Click(Sender);
 end;
 
 procedure TForm1.btnStoreClick(Sender: TObject);
